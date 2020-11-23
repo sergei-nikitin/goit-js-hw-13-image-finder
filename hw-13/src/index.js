@@ -19,7 +19,6 @@ function onSearch(e) {
     apiServise.resetPage();
     apiServise.fetchArticles().then(articles => {
         clearGallery();
-        console.log(articles);
         marckUpCard(articles);
     });
 
@@ -36,12 +35,9 @@ function clearGallery() {
 
 function onLoadMoreFoto() {
     apiServise.fetchArticles().then(articles => {
-        // console.log(articles);
         marckUpCard(articles);
     });
-    // scrollDown();
-    // window.scrollTo(0, 0)
-   
+    scrollDown(); 
 }
  
 
@@ -49,17 +45,14 @@ function onScrollUp() {
     window.scrollTo(0, 0)
 }
 
-
-
 function scrollDown() {
-    const windowCoords = document.documentElement.clientHeight;
-    (function scroll() {
-      if (window.pageYOffset < windowCoords) {
-        window.scrollBy(0, -10);
-        setTimeout(scroll, 200);
-      }
-      if (window.pageYOffset > windowCoords) {
-        window.scrollTo(0, windowCoords);
-      }
-    })();
-  }
+    let windowHeight = document.body.scrollHeight;
+    setTimeout(() => {
+        window.scrollTo({
+            top: windowHeight,
+            left: 0,
+            behavior: 'smooth',
+        });
+    }, 250);
+}
+   
