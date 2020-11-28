@@ -4,5 +4,6 @@ export default function getRefs () {
         gallery: document.querySelector('.gallery'),
         loadMoreBtn: document.querySelector('.btn-load-more'),
         btnUp: document.querySelector('.btn-up'),
+        sentinel: document.querySelector('.sentinel'),
      };
     }
