@@ -43,7 +43,7 @@ ul {
   margin-top: 50px;
   margin-bottom: 15px;
   height: 50px;
-  border: 3px solid black;
+  border: 3px solid powderblue;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -55,6 +55,7 @@ ul {
 
 .photo-card {
   margin-bottom: 30px;
+  background-color: powderblue;
 
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -69,10 +70,11 @@ ul {
   width: 100%;
   height: 450px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .btn-load-more {
-  background-color: lightskyblue;
+  background-color: powderblue;
   height: 70px;
   border-radius: 10px;
   margin-top: 50px;
@@ -98,7 +100,10 @@ ul {
   border: none;
 }
 
-.btn-up:hover {
+.search-form:hover,
+.btn-up:hover,
+.btn-load-more:hover,
+.photo-card:hover {
   background-color: lightskyblue;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
 }
