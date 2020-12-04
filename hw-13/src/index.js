@@ -6,6 +6,10 @@ import ApiService from './js/apiService';
 import * as basicLightbox from 'basiclightbox';
 import '../node_modules/basicLightbox/dist/basicLightbox.min.css';
 
+
+
+
+
 const apiServise = new ApiService();
 const refs = getRefs();
 
