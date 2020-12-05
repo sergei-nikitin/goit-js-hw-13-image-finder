@@ -30,6 +30,7 @@ function onSearch(e) {
     apiServise.fetchArticles().then(articles => {
         clearGallery();
         marckUpCard(articles);
+        
     });
 
     

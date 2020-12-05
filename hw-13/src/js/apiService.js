@@ -10,7 +10,7 @@ import '@pnotify/core/dist/Material.css';
 // import '@pnotify/core/dist/Angeler.css';
 
 import { defaults } from '@pnotify/core';
-import { error } from '@pnotify/core';
+import { error, alert } from '@pnotify/core';
 
 
 defaults.styling = 'material';
@@ -63,16 +63,21 @@ export default class ApiService {
         try {
             const response = await fetch(`${BASE_URL}?key=${KEY}&q=${this.searchQuery}&image_type=photo&page=${this.page}&per_page=${per_page}`);
             const result = await response.json();
-            if (result.totalHits === 0) {
-                 error({
+            if (result.totalHits > 0 && this.page === 1) {
+                 alert({
+            text: `Получено ${result.total} фотографий`,
+            type: 'info',
+            delay: 3000,
+        });
+            } else if (result.totalHits === 0) {
+                   error({
             text: 'введите более специфичное название ',
             type: 'info',
-            delay: 2000,
+            delay: 3000,
         });
-            } else {
-                this.page += 1;
-        return result.hits;
             }
+            this.page += 1;
+        return result.hits;
          
         } catch (err) {
             console.log('чтото пошло не так');
