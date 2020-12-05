@@ -36,53 +36,59 @@ export default class ApiService {
         this.page = 1;
     }
     //             USING PROMISE
-    // fetchArticles() {
-    //     return fetch(`${BASE_URL}?key=${KEY}&q=${this.searchQuery}&image_type=photo&page=${this.page}&per_page=${per_page}`)
+    fetchArticles() {
+        return fetch(`${BASE_URL}?key=${KEY}&q=${this.searchQuery}&image_type=photo&page=${this.page}&per_page=${per_page}`)
     
-    //         .then(response => { 
-    //             if (response.status === 404) {
-    //             alert('status 404');
-    //         }    
-    //            return response.json()
-    // })
-    //         .then(data => {
-    //             if (data.totalHits === 0) {
-    //                 error({
-    //         text: 'введите более специфичное название ',
-    //         type: 'info',
-    //         delay: 2000,
-    //     });
-    //             }
-    //             this.page += 1;
-    //             return data.hits;
-    //         })
-    // }      
-
-//                 USING ASYNC/AWAIT
-    async fetchArticles() {
-        try {
-            const response = await fetch(`${BASE_URL}?key=${KEY}&q=${this.searchQuery}&image_type=photo&page=${this.page}&per_page=${per_page}`);
-            const result = await response.json();
-            if (result.totalHits > 0 && this.page === 1) {
+            .then(response => { 
+                if (response.status === 404) {
+                alert('status 404');
+            }    
+               return response.json()
+    })
+            .then(data => {
+                 if (data.totalHits > 0 && this.page === 1) {
                  alert({
-            text: `Получено ${result.total} фотографий`,
+            text: `Получено ${data.total} фотографий`,
             type: 'info',
             delay: 3000,
         });
-            } else if (result.totalHits === 0) {
+            } else if (data.totalHits === 0) {
                    error({
             text: 'введите более специфичное название ',
             type: 'info',
             delay: 3000,
         });
             }
-            this.page += 1;
-        return result.hits;
+                this.page += 1;
+                return data.hits;
+            })
+    }      
+
+//                 USING ASYNC/AWAIT
+    // async fetchArticles() {
+    //     try {
+    //         const response = await fetch(`${BASE_URL}?key=${KEY}&q=${this.searchQuery}&image_type=photo&page=${this.page}&per_page=${per_page}`);
+    //         const result = await response.json();
+    //         if (result.totalHits > 0 && this.page === 1) {
+    //              alert({
+    //         text: `Получено ${result.total} фотографий`,
+    //         type: 'info',
+    //         delay: 3000,
+    //     });
+    //         } else if (result.totalHits === 0) {
+    //                error({
+    //         text: 'введите более специфичное название ',
+    //         type: 'info',
+    //         delay: 3000,
+    //     });
+    //         }
+    //         this.page += 1;
+    //     return result.hits;
          
-        } catch (err) {
-            console.log('чтото пошло не так');
-        };
-        }
+    //     } catch (err) {
+    //         console.log('чтото пошло не так');
+    //     };
+    //     }
     
 
     resetPage() {
